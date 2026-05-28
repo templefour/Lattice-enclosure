@@ -46,34 +46,65 @@
       max-width: 520px;
     }
 
+    .setup-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
     .setup-title {
       font-size: 32px;
       font-weight: 700;
       letter-spacing: 3px;
       color: var(--text);
-      margin-bottom: 4px;
+    }
+
+    .rules-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--line-hint);
+      background: var(--card);
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      font-family: var(--font);
+    }
+
+    .rules-btn:hover {
+      border-color: var(--dot);
+      color: var(--dot);
+      transform: scale(1.1);
     }
 
     .setup-subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
+    /* Player Setup Card */
     .player-setup-card {
       background: var(--card);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px 24px;
       width: 100%;
       box-shadow: var(--shadow);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .player-setup-header {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .player-setup-dot {
@@ -82,6 +113,7 @@
       border-radius: 50%;
       border: 2px solid var(--line-hint);
       transition: all 0.3s ease;
+      flex-shrink: 0;
     }
 
     .player-setup-dot.selected {
@@ -89,9 +121,28 @@
       box-shadow: 0 0 0 2px currentColor;
     }
 
-    .player-setup-name {
+    .name-input {
+      flex: 1;
+      border: none;
+      border-bottom: 2px solid var(--line-hint);
+      background: transparent;
       font-size: 17px;
       font-weight: 600;
+      font-family: var(--font);
+      color: var(--text);
+      padding: 2px 0;
+      outline: none;
+      transition: border-color 0.2s ease;
+      min-width: 0;
+    }
+
+    .name-input:focus {
+      border-bottom-color: var(--dot);
+    }
+
+    .name-input::placeholder {
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
     .color-grid {
@@ -139,6 +190,63 @@
       pointer-events: none;
     }
 
+    /* Mode Selection */
+    .mode-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .mode-card-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .mode-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .mode-option {
+      flex: 1;
+      padding: 12px 8px;
+      border: 2px solid var(--line-hint);
+      border-radius: var(--radius-sm);
+      background: var(--card);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      font-family: var(--font);
+    }
+
+    .mode-option:hover {
+      border-color: var(--dot);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mode-option.selected {
+      border-color: var(--dot);
+      background: var(--dot);
+      color: white;
+    }
+
+    .mode-option-label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mode-option-desc {
+      font-size: 11px;
+      margin-top: 3px;
+      opacity: 0.7;
+    }
+
     .start-btn {
       margin-top: 8px;
       padding: 14px 48px;
@@ -172,6 +280,50 @@
       width: 100%;
       min-height: 100vh;
       padding: 16px;
+    }
+
+    /* Series Info Bar */
+    .series-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 560px;
+      margin-bottom: 10px;
+      padding: 8px 0;
+    }
+
+    .series-round {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .series-wins {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .series-wins .win-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0.25;
+      transition: all 0.3s ease;
+    }
+
+    .series-wins .win-dot.won {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .series-vs {
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
     .game-top-bar {
@@ -246,6 +398,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 80px;
     }
 
     .player-score {
@@ -316,7 +469,7 @@
       border-color: var(--dot);
     }
 
-    /* ========== Game Over Modal ========== */
+    /* ========== Modal Base ========== */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -343,8 +496,12 @@
       text-align: center;
       box-shadow: var(--shadow-lg);
       animation: slideUp 0.3s ease;
-      max-width: 360px;
+      max-width: 380px;
       width: 90%;
+    }
+
+    .modal-card.wide {
+      max-width: 440px;
     }
 
     @keyframes slideUp {
@@ -392,6 +549,60 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
+    .modal-btn + .modal-btn {
+      margin-left: 8px;
+    }
+
+    .modal-btn.secondary {
+      background: var(--line-hint);
+      color: var(--text);
+    }
+
+    .modal-btn.secondary:hover {
+      background: #D5D0CA;
+    }
+
+    /* ========== Rules Modal ========== */
+    .rules-content {
+      text-align: left;
+      padding: 0 4px;
+    }
+
+    .rules-content h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 16px 0 6px;
+      color: var(--text);
+    }
+
+    .rules-content h3:first-child {
+      margin-top: 8px;
+    }
+
+    .rules-content p, .rules-content li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .rules-content ul {
+      padding-left: 20px;
+    }
+
+    .rules-content li {
+      margin-bottom: 2px;
+    }
+
+    .rules-content .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .rules-close-row {
+      margin-top: 20px;
+      text-align: center;
+    }
+
     /* ========== Tip Toast ========== */
     .tip-toast {
       position: fixed;
@@ -423,9 +634,13 @@
       .game-top-bar { gap: 4px; }
       .player-panel { padding: 8px 10px; gap: 6px; }
       .player-score { font-size: 22px; }
+      .player-name { max-width: 56px; }
       .board-container { padding: 14px; }
       .turn-text { font-size: 11px; }
       .modal-card { padding: 28px 24px; }
+      .mode-options { gap: 6px; }
+      .mode-option { padding: 10px 4px; }
+      .series-bar { gap: 10px; }
     }
   </style>
 </head>
@@ -433,13 +648,16 @@
 
   <!-- ========== Setup Screen ========== -->
   <div id="setup-screen">
-    <div class="setup-title">点阵围格</div>
+    <div class="setup-header">
+      <div class="setup-title">点阵围格</div>
+      <button class="rules-btn" id="rules-open-btn" title="游戏规则">?</button>
+    </div>
     <div class="setup-subtitle">双人对战 · 选色开局</div>
 
     <div class="player-setup-card" id="p1-setup">
       <div class="player-setup-header">
         <div class="player-setup-dot" id="p1-dot"></div>
-        <div class="player-setup-name">玩家一</div>
+        <input class="name-input" id="p1-name-input" type="text" placeholder="输入玩家一名字" maxlength="8">
       </div>
       <div class="color-grid" id="p1-colors"></div>
     </div>
@@ -447,9 +665,27 @@
     <div class="player-setup-card" id="p2-setup">
       <div class="player-setup-header">
         <div class="player-setup-dot" id="p2-dot"></div>
-        <div class="player-setup-name">玩家二</div>
+        <input class="name-input" id="p2-name-input" type="text" placeholder="输入玩家二名字" maxlength="8">
       </div>
       <div class="color-grid" id="p2-colors"></div>
+    </div>
+
+    <div class="mode-card">
+      <div class="mode-card-title">对战模式</div>
+      <div class="mode-options">
+        <div class="mode-option selected" data-mode="1">
+          <div class="mode-option-label">一局定胜负</div>
+          <div class="mode-option-desc">1 局</div>
+        </div>
+        <div class="mode-option" data-mode="3">
+          <div class="mode-option-label">三局两胜</div>
+          <div class="mode-option-desc">先胜 2 局</div>
+        </div>
+        <div class="mode-option" data-mode="5">
+          <div class="mode-option-label">五局三胜</div>
+          <div class="mode-option-desc">先胜 3 局</div>
+        </div>
+      </div>
     </div>
 
     <button class="start-btn" id="start-btn" disabled>选择颜色后开始</button>
@@ -457,11 +693,17 @@
 
   <!-- ========== Game Screen ========== -->
   <div id="game-screen">
+    <div class="series-bar" id="series-bar">
+      <div class="series-wins" id="series-p1-wins"></div>
+      <div class="series-round" id="series-round"></div>
+      <div class="series-vs">VS</div>
+      <div class="series-wins" id="series-p2-wins"></div>
+    </div>
     <div class="game-top-bar">
       <div class="player-panel p1" id="p1-panel">
         <div class="player-avatar"><div class="inner" id="p1-avatar"></div></div>
         <div class="player-detail">
-          <div class="player-name">玩家一</div>
+          <div class="player-name" id="p1-name-display">玩家一</div>
           <div class="player-score" id="p1-score">0</div>
         </div>
       </div>
@@ -472,7 +714,7 @@
       <div class="player-panel p2" id="p2-panel">
         <div class="player-avatar"><div class="inner" id="p2-avatar"></div></div>
         <div class="player-detail">
-          <div class="player-name">玩家二</div>
+          <div class="player-name" id="p2-name-display">玩家二</div>
           <div class="player-score" id="p2-score">0</div>
         </div>
       </div>
@@ -494,16 +736,71 @@
       <div class="modal-scores">
         <div class="modal-score-item">
           <div class="modal-score-dot" id="modal-p1-dot"></div>
-          <div class="modal-score-name">玩家一</div>
+          <div class="modal-score-name" id="modal-p1-name">玩家一</div>
           <div class="modal-score-value" id="modal-p1-score">0</div>
         </div>
         <div class="modal-score-item">
           <div class="modal-score-dot" id="modal-p2-dot"></div>
-          <div class="modal-score-name">玩家二</div>
+          <div class="modal-score-name" id="modal-p2-name">玩家二</div>
           <div class="modal-score-value" id="modal-p2-score">0</div>
         </div>
       </div>
       <button class="modal-btn" id="play-again-btn">再来一局</button>
+    </div>
+  </div>
+
+  <!-- ========== Series Over Modal ========== -->
+  <div class="modal-overlay" id="series-modal">
+    <div class="modal-card">
+      <div class="modal-icon" id="series-icon"></div>
+      <div class="modal-title" id="series-title">系列赛结束</div>
+      <div class="modal-scores">
+        <div class="modal-score-item">
+          <div class="modal-score-dot" id="series-p1-dot"></div>
+          <div class="modal-score-name" id="series-p1-name">玩家一</div>
+          <div class="modal-score-value" id="series-p1-score">0</div>
+        </div>
+        <div class="modal-score-item">
+          <div class="modal-score-dot" id="series-p2-dot"></div>
+          <div class="modal-score-name" id="series-p2-name">玩家二</div>
+          <div class="modal-score-value" id="series-p2-score">0</div>
+        </div>
+      </div>
+      <button class="modal-btn" id="series-restart-btn">重新开始</button>
+      <button class="modal-btn secondary" id="series-back-btn">返回选色</button>
+    </div>
+  </div>
+
+  <!-- ========== Rules Modal ========== -->
+  <div class="modal-overlay" id="rules-modal">
+    <div class="modal-card wide">
+      <div class="modal-title">游戏规则</div>
+      <div class="rules-content">
+        <h3>棋盘</h3>
+        <p>5 x 5 点阵组成 4 x 4 共 16 个方格。</p>
+
+        <h3>下棋</h3>
+        <ul>
+          <li>两位玩家<span class="highlight">轮流画线</span>，每次只能画一条水平或垂直的短线，连接相邻的两个点。</li>
+          <li>不能画斜线，也不能连接不相邻的点。</li>
+        </ul>
+
+        <h3>占领方格</h3>
+        <ul>
+          <li>当一条线成为某个方格的<span class="highlight">第 4 条边</span>（即完成封闭）时，画这条线的玩家占领该格。</li>
+          <li>占领方格的玩家<span class="highlight">获得额外一次行动</span>，可继续画线。</li>
+          <li>若一次画线同时完成两个方格，两个格子均归该玩家所有，并同样获得额外行动。</li>
+        </ul>
+
+        <h3>胜负</h3>
+        <ul>
+          <li>所有 16 个方格被占领后，<span class="highlight">占领更多方格的玩家获胜</span>。</li>
+          <li>根据所选模式，可能需要多局对决才能决出最终胜者。</li>
+        </ul>
+      </div>
+      <div class="rules-close-row">
+        <button class="modal-btn" id="rules-close-btn">知道了</button>
+      </div>
     </div>
   </div>
 
@@ -538,23 +835,22 @@
        GAME STATE
        ================================================================ */
     var p1Color = null, p2Color = null;
+    var p1Name = '玩家一', p2Name = '玩家二';
+    var gameMode = 1;          // 1, 3, or 5
+    var seriesWins = [0, 0];   // [p1 series wins, p2 series wins]
+    var roundNum = 1;
+
     var currentPlayer = 1;
     var scores = [0, 0];
-    var hLines = [];   // hLines[row][col]  horizontal, row 0..4, col 0..3
-    var vLines = [];   // vLines[row][col]  vertical,   row 0..3, col 0..4
-    var boxOwner = []; // boxOwner[row][col] 0=none, 1=p1, 2=p2
+    var hLines = [];
+    var vLines = [];
+    var boxOwner = [];
     var totalBoxes = BOXES * BOXES;
     var hoveredLine = null;
     var gameOver = false;
 
-    // Canvas
     var canvas, ctx;
     var cellSize, pad, boardPx;
-
-    // Animation
-    var lastPlacedLine = null;
-    var lastPlacedTime = 0;
-    var PLACE_ANIM_MS = 200;
 
     /* ================================================================
        POLYFILL: roundRect
@@ -588,6 +884,15 @@
       COLORS.forEach(function (c, i) {
         p1Grid.appendChild(makeColorBtn(c, i, 1));
         p2Grid.appendChild(makeColorBtn(c, i, 2));
+      });
+
+      // Mode selection
+      document.querySelectorAll('.mode-option').forEach(function (el) {
+        el.addEventListener('click', function () {
+          document.querySelectorAll('.mode-option').forEach(function (o) { o.classList.remove('selected'); });
+          el.classList.add('selected');
+          gameMode = parseInt(el.dataset.mode, 10);
+        });
       });
 
       updateColorUI();
@@ -647,6 +952,13 @@
       btn.textContent = ready ? '开始游戏' : '选择颜色后开始';
     }
 
+    function readPlayerNames() {
+      var n1 = document.getElementById('p1-name-input').value.trim();
+      var n2 = document.getElementById('p2-name-input').value.trim();
+      p1Name = n1 || '玩家一';
+      p2Name = n2 || '玩家二';
+    }
+
     /* ================================================================
        GAME INIT
        ================================================================ */
@@ -661,7 +973,6 @@
       boxOwner = [];
       for (var r = 0; r < BOXES; r++) { boxOwner[r] = []; for (var c = 0; c < BOXES; c++) boxOwner[r][c] = 0; }
       hoveredLine = null;
-      lastPlacedLine = null;
 
       canvas = document.getElementById('board');
       ctx = canvas.getContext('2d');
@@ -671,18 +982,26 @@
       var hex2 = COLORS[p2Color].hex;
       document.getElementById('p1-avatar').style.background = hex1;
       document.getElementById('p2-avatar').style.background = hex2;
+      document.getElementById('p1-name-display').textContent = p1Name;
+      document.getElementById('p2-name-display').textContent = p2Name;
       document.getElementById('p1-score').textContent = '0';
       document.getElementById('p2-score').textContent = '0';
       document.getElementById('p1-score').style.color = hex1;
       document.getElementById('p2-score').style.color = hex2;
 
+      updateSeriesBar();
       updateTurnUI();
       drawBoard();
     }
 
+    function resetSeries() {
+      seriesWins = [0, 0];
+      roundNum = 1;
+    }
+
     function resizeCanvas() {
       var maxW = Math.min(window.innerWidth - 72, 480);
-      var maxH = window.innerHeight - 240;
+      var maxH = window.innerHeight - 260;
       var size = Math.max(260, Math.min(maxW, maxH, 480));
       var dpr = window.devicePixelRatio || 1;
 
@@ -695,6 +1014,40 @@
       canvas.style.width = size + 'px';
       canvas.style.height = size + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    /* ================================================================
+       SERIES BAR
+       ================================================================ */
+    function updateSeriesBar() {
+      var bar = document.getElementById('series-bar');
+
+      if (gameMode === 1) {
+        bar.style.display = 'none';
+        return;
+      }
+
+      bar.style.display = 'flex';
+
+      var neededWins = Math.ceil(gameMode / 2);
+      var maxRounds = gameMode;
+
+      // Round info
+      document.getElementById('series-round').textContent = '第 ' + roundNum + '/' + maxRounds + ' 局';
+
+      // P1 wins dots
+      var p1Html = '';
+      for (var i = 0; i < neededWins; i++) {
+        p1Html += '<span class="win-dot' + (i < seriesWins[0] ? ' won' : '') + '" style="background:' + COLORS[p1Color].hex + '"></span>';
+      }
+      document.getElementById('series-p1-wins').innerHTML = p1Html;
+
+      // P2 wins dots
+      var p2Html = '';
+      for (var i = 0; i < neededWins; i++) {
+        p2Html += '<span class="win-dot' + (i < seriesWins[1] ? ' won' : '') + '" style="background:' + COLORS[p2Color].hex + '"></span>';
+      }
+      document.getElementById('series-p2-wins').innerHTML = p2Html;
     }
 
     /* ================================================================
@@ -812,7 +1165,7 @@
             ctx.roundRect(tl.x + inset, tl.y + inset, br.x - tl.x - 2 * inset, br.y - tl.y - 2 * inset, 4);
             ctx.fill();
 
-            // Owner mark
+            // Owner initial - first character of name
             var cx = (tl.x + br.x) / 2;
             var cy = (tl.y + br.y) / 2;
             ctx.globalAlpha = 0.55;
@@ -820,7 +1173,8 @@
             ctx.font = '600 ' + Math.max(14, Math.round(cellSize * 0.18)) + 'px ' + getComputedStyle(document.body).fontFamily;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.fillText(owner === 1 ? '一' : '二', cx, cy);
+            var mark = owner === 1 ? p1Name.charAt(0) : p2Name.charAt(0);
+            ctx.fillText(mark, cx, cy);
             ctx.restore();
           }
         }
@@ -872,28 +1226,23 @@
 
       var type = line.type, row = line.row, col = line.col;
 
-      // Place the line
       if (type === 'h') hLines[row][col] = currentPlayer;
       else              vLines[row][col] = currentPlayer;
 
-      // Check completed boxes
       var completed = checkBoxes(line);
 
       if (completed > 0) {
-        // Extra turn – player continues
-        showToast((currentPlayer === 1 ? '玩家一' : '玩家二') + '占领了 ' + completed + ' 格，继续行动！');
+        showToast((currentPlayer === 1 ? p1Name : p2Name) + ' 占领了 ' + completed + ' 格，继续行动！');
       } else {
-        // Switch turn
         currentPlayer = currentPlayer === 1 ? 2 : 1;
       }
 
       updateTurnUI();
       drawBoard();
 
-      // Game over?
       if (scores[0] + scores[1] === totalBoxes) {
         gameOver = true;
-        setTimeout(showGameOver, 500);
+        setTimeout(handleRoundEnd, 500);
       }
     }
 
@@ -902,7 +1251,6 @@
       var completed = 0;
 
       if (type === 'h') {
-        // Horizontal line at (row, col) is the top of box (row, col) or bottom of box (row-1, col)
         if (row < BOXES && boxOwner[row][col] === 0 && isBoxComplete(row, col)) {
           boxOwner[row][col] = currentPlayer;
           scores[currentPlayer - 1]++;
@@ -914,7 +1262,6 @@
           completed++;
         }
       } else {
-        // Vertical line at (row, col) is the left of box (row, col) or right of box (row, col-1)
         if (col < BOXES && boxOwner[row][col] === 0 && isBoxComplete(row, col)) {
           boxOwner[row][col] = currentPlayer;
           scores[currentPlayer - 1]++;
@@ -938,11 +1285,110 @@
     }
 
     /* ================================================================
+       ROUND & SERIES LOGIC
+       ================================================================ */
+    function handleRoundEnd() {
+      // Determine round winner
+      var roundWinner = 0; // 0 = draw
+      if (scores[0] > scores[1]) roundWinner = 1;
+      else if (scores[1] > scores[0]) roundWinner = 2;
+
+      if (roundWinner > 0) {
+        seriesWins[roundWinner - 1]++;
+      }
+
+      var neededWins = Math.ceil(gameMode / 2);
+      var seriesDecided = seriesWins[0] >= neededWins || seriesWins[1] >= neededWins;
+
+      if (gameMode === 1) {
+        // Single game - just show round result
+        showRoundOverModal();
+        return;
+      }
+
+      if (seriesDecided) {
+        // Series is over
+        showSeriesOverModal();
+      } else {
+        // Show round result, then continue
+        showRoundOverModal();
+      }
+    }
+
+    function showRoundOverModal() {
+      var hex1 = COLORS[p1Color].hex, hex2 = COLORS[p2Color].hex;
+      document.getElementById('modal-p1-dot').style.background = hex1;
+      document.getElementById('modal-p2-dot').style.background = hex2;
+      document.getElementById('modal-p1-name').textContent = p1Name;
+      document.getElementById('modal-p2-name').textContent = p2Name;
+      document.getElementById('modal-p1-score').textContent = scores[0];
+      document.getElementById('modal-p1-score').style.color = hex1;
+      document.getElementById('modal-p2-score').textContent = scores[1];
+      document.getElementById('modal-p2-score').style.color = hex2;
+
+      var icon = document.getElementById('modal-icon');
+      var title = document.getElementById('modal-title');
+
+      if (scores[0] > scores[1]) {
+        icon.textContent = '\uD83C\uDFC6';
+        title.textContent = p1Name + ' 赢得本局！';
+        title.style.color = hex1;
+      } else if (scores[1] > scores[0]) {
+        icon.textContent = '\uD83C\uDFC6';
+        title.textContent = p2Name + ' 赢得本局！';
+        title.style.color = hex2;
+      } else {
+        icon.textContent = '\uD83E\uDD1D';
+        title.textContent = '本局平局！';
+        title.style.color = '#2C2C2C';
+      }
+
+      var neededWins = Math.ceil(gameMode / 2);
+      var seriesDecided = gameMode === 1 || seriesWins[0] >= neededWins || seriesWins[1] >= neededWins;
+
+      var btn = document.getElementById('play-again-btn');
+      if (gameMode === 1 || seriesDecided) {
+        btn.textContent = '再来一局';
+      } else {
+        btn.textContent = '下一局';
+      }
+
+      document.getElementById('gameover-modal').classList.add('show');
+    }
+
+    function showSeriesOverModal() {
+      var hex1 = COLORS[p1Color].hex, hex2 = COLORS[p2Color].hex;
+      document.getElementById('series-p1-dot').style.background = hex1;
+      document.getElementById('series-p2-dot').style.background = hex2;
+      document.getElementById('series-p1-name').textContent = p1Name;
+      document.getElementById('series-p2-name').textContent = p2Name;
+      document.getElementById('series-p1-score').textContent = seriesWins[0];
+      document.getElementById('series-p1-score').style.color = hex1;
+      document.getElementById('series-p2-score').textContent = seriesWins[1];
+      document.getElementById('series-p2-score').style.color = hex2;
+
+      var icon = document.getElementById('series-icon');
+      var title = document.getElementById('series-title');
+
+      if (seriesWins[0] > seriesWins[1]) {
+        icon.textContent = '\uD83C\uDFC6';
+        title.textContent = p1Name + ' 赢得系列赛！';
+        title.style.color = hex1;
+      } else {
+        icon.textContent = '\uD83C\uDFC6';
+        title.textContent = p2Name + ' 赢得系列赛！';
+        title.style.color = hex2;
+      }
+
+      document.getElementById('series-modal').classList.add('show');
+    }
+
+    /* ================================================================
        UI UPDATES
        ================================================================ */
     function updateTurnUI() {
       var color = playerHex(currentPlayer);
-      var name = currentPlayer === 1 ? '玩家一' : '玩家二';
+      var name = currentPlayer === 1 ? p1Name : p2Name;
       document.getElementById('turn-text').textContent = name + ' 回合';
       document.getElementById('turn-text').style.color = color;
       document.getElementById('turn-arrow').style.background = color;
@@ -963,35 +1409,6 @@
         p1.classList.remove('active');
         p1.style.borderColor = 'transparent';
       }
-    }
-
-    function showGameOver() {
-      var hex1 = COLORS[p1Color].hex, hex2 = COLORS[p2Color].hex;
-      document.getElementById('modal-p1-dot').style.background = hex1;
-      document.getElementById('modal-p2-dot').style.background = hex2;
-      document.getElementById('modal-p1-score').textContent = scores[0];
-      document.getElementById('modal-p1-score').style.color = hex1;
-      document.getElementById('modal-p2-score').textContent = scores[1];
-      document.getElementById('modal-p2-score').style.color = hex2;
-
-      var icon = document.getElementById('modal-icon');
-      var title = document.getElementById('modal-title');
-
-      if (scores[0] > scores[1]) {
-        icon.textContent = '\uD83C\uDFC6';
-        title.textContent = '玩家一 获胜！';
-        title.style.color = hex1;
-      } else if (scores[1] > scores[0]) {
-        icon.textContent = '\uD83C\uDFC6';
-        title.textContent = '玩家二 获胜！';
-        title.style.color = hex2;
-      } else {
-        icon.textContent = '\uD83E\uDD1D';
-        title.textContent = '势均力敌，平局！';
-        title.style.color = '#2C2C2C';
-      }
-
-      document.getElementById('gameover-modal').classList.add('show');
     }
 
     /* ================================================================
@@ -1060,6 +1477,7 @@
       document.getElementById('setup-screen').style.display = 'none';
       document.getElementById('game-screen').style.display = 'none';
       document.getElementById('gameover-modal').classList.remove('show');
+      document.getElementById('series-modal').classList.remove('show');
 
       if (id === 'setup') document.getElementById('setup-screen').style.display = 'flex';
       else if (id === 'game') document.getElementById('game-screen').style.display = 'flex';
@@ -1071,19 +1489,71 @@
     function main() {
       initSetup();
 
+      // Rules modal
+      document.getElementById('rules-open-btn').addEventListener('click', function () {
+        document.getElementById('rules-modal').classList.add('show');
+      });
+      document.getElementById('rules-close-btn').addEventListener('click', function () {
+        document.getElementById('rules-modal').classList.remove('show');
+      });
+      document.getElementById('rules-modal').addEventListener('click', function (e) {
+        if (e.target === this) this.classList.remove('show');
+      });
+
+      // Start game
       document.getElementById('start-btn').addEventListener('click', function () {
         if (p1Color !== null && p2Color !== null) {
+          readPlayerNames();
+          resetSeries();
           showScreen('game');
           initGame();
           bindCanvas();
         }
       });
 
-      document.getElementById('restart-btn').addEventListener('click', function () {
+      // Round over: play again / next round
+      document.getElementById('play-again-btn').addEventListener('click', function () {
         document.getElementById('gameover-modal').classList.remove('show');
+
+        var neededWins = Math.ceil(gameMode / 2);
+        var seriesDecided = gameMode === 1 || seriesWins[0] >= neededWins || seriesWins[1] >= neededWins;
+
+        if (gameMode === 1 || seriesDecided) {
+          // Restart entire series
+          resetSeries();
+        } else {
+          // Next round in series
+          roundNum++;
+        }
+
         initGame();
       });
 
+      // Series over: restart series
+      document.getElementById('series-restart-btn').addEventListener('click', function () {
+        document.getElementById('series-modal').classList.remove('show');
+        resetSeries();
+        initGame();
+      });
+
+      // Series over: back to setup
+      document.getElementById('series-back-btn').addEventListener('click', function () {
+        document.getElementById('series-modal').classList.remove('show');
+        showScreen('setup');
+        p1Color = null;
+        p2Color = null;
+        updateColorUI();
+        updateStartBtn();
+      });
+
+      // Restart current round
+      document.getElementById('restart-btn').addEventListener('click', function () {
+        document.getElementById('gameover-modal').classList.remove('show');
+        document.getElementById('series-modal').classList.remove('show');
+        initGame();
+      });
+
+      // Back to setup
       document.getElementById('back-btn').addEventListener('click', function () {
         showScreen('setup');
         p1Color = null;
@@ -1092,9 +1562,9 @@
         updateStartBtn();
       });
 
-      document.getElementById('play-again-btn').addEventListener('click', function () {
-        document.getElementById('gameover-modal').classList.remove('show');
-        initGame();
+      // Close modals on overlay click
+      document.getElementById('gameover-modal').addEventListener('click', function (e) {
+        if (e.target === this) this.classList.remove('show');
       });
 
       window.addEventListener('resize', function () {
@@ -1114,7 +1584,6 @@
       canvas.addEventListener('click', onClick);
       canvas.addEventListener('mouseleave', onLeave);
 
-      // Touch: touchstart to detect, touchmove to update hover, touchend to place
       canvas.addEventListener('touchstart', function (e) {
         if (gameOver) return;
         e.preventDefault();
